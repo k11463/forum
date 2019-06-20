@@ -28,8 +28,9 @@
             </div>
         </div>
         <div class="right">
-            <div class="box" v-for="rc in RightCols" :key="rc">
-                {{ rc }}
+            <div class="box" v-for="(rc, id) in RightCols" :key="id">
+                <i :class="rc.icon"></i>
+                {{ rc.text }}
                 <div class="botLine"></div>
             </div>
         </div>
@@ -46,23 +47,30 @@ export default {
             selection: 0,
             isLogin: false,
             RightCols: [
-                "註 冊", "登 入"
-            ]
+                {
+                    text: "註 冊",
+                    icon: "fas fa-user"
+                },
+                {
+                    text: "登 入",
+                    icon: "fas fa-user"
+                }
+            ],
         }
     },
     methods: {
         ChangeSelection(val) {
             this.selection = val;
         }
-    }
+    },
 }
 </script>
 
 
-<style lang="scss">
+<style lang="scss" scoped>
 $BorderColor:rgb(110, 95, 53);
 .bg {
-    background-color: #dfb669;
+    background-color: #f1cb85;
     width: 100vw;
     height: 6vh;
     font-family: "標楷體";
@@ -76,11 +84,11 @@ $BorderColor:rgb(110, 95, 53);
         }
     }
     .mid {
-        width: 60%;
+        width: 48%;
         height: 100%;
         float: left;
         .selection {
-            width: 15%;
+            width: 22%;
             height: 100%;
             float: left;
             user-select: none;
@@ -102,6 +110,7 @@ $BorderColor:rgb(110, 95, 53);
                 .selected:focus + ul {
                     opacity: 1;
                     transform: translateY(8px);
+                    transform: translateX(12px);
                 }
                 .selected:hover {
                     background-color: rgb(255, 241, 203);
@@ -110,7 +119,6 @@ $BorderColor:rgb(110, 95, 53);
                     opacity: 0;
                     padding: 0;
                     top: 48px;
-                    left: 0;
                     width: 100px;
                     height: 84px;
                     position: absolute;
@@ -138,7 +146,7 @@ $BorderColor:rgb(110, 95, 53);
             }
         }
         .searchBox {
-            width: 70%;
+            width: 55%;
             height: 100%;
             float: left;
             input {
@@ -152,12 +160,9 @@ $BorderColor:rgb(110, 95, 53);
                 color: rgb(110, 85, 15);
                 padding-left: 4px;
             }
-            input:focus {
-                background-color: rgb(230, 224, 208);
-            }
         }
         .send {
-            width: 15%;
+            width: 23%;
             height: 100%;
             float: left;
             display: flex;
@@ -170,7 +175,7 @@ $BorderColor:rgb(110, 95, 53);
                 border-right: 1px solid $BorderColor;
                 border-bottom: 1px solid $BorderColor;
                 border-radius: 0 5px 5px 0;
-                background-color: rgb(190, 147, 66);
+                background-color: rgb(219, 178, 102);
                 color: rgb(255, 249, 240);
                 font-weight: bold;
                 transform: translateY(-4px);
@@ -183,27 +188,27 @@ $BorderColor:rgb(110, 95, 53);
         }
     }
     .right {
-        width: 20%;
+        width: 32%;
         height: 100%;
         float: left;
         display: flex;
-        justify-content: space-around;
         align-items: center;
+        justify-content: flex-end;
         .box {
             height: 32px;
             font-size: 16px;
             font-weight: bold;
-            float: right;
-            display: flex;
-            align-items: center;
             cursor: pointer;
             color: rgb(110, 85, 15);
             position: relative;
+            margin-right: 8%;
+            display: flex;
+            align-items: center;
             .botLine {
                 margin-top: 16px;
-                width: 44px;
+                width: 56px;
                 position: absolute;
-                border-bottom: 2px solid rgb(110, 85, 15);
+                border-bottom: 2px solid #fff;
                 transition: 0.4s;
                 opacity: 0;
                 transform: translateY(4px);
@@ -212,6 +217,9 @@ $BorderColor:rgb(110, 95, 53);
         .box:hover > .botLine {
             opacity: 1;
             transform: translateY(-2px);
+        }
+        .box:hover {
+            color: #fff;
         }
     }
 }
