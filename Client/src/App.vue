@@ -1,11 +1,7 @@
 <template>
   <v-app>
-    <div class="outer">
-      <div class="inner">
-        <Nav></Nav>
-        <router-view></router-view>
-      </div>
-    </div>
+    <Nav></Nav>
+    <router-view></router-view>
   </v-app>
 </template>
 

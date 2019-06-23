@@ -39,6 +39,12 @@
 
 <script>
 export default {
+    mounted() {
+        window.addEventListener('scroll', (e) => {
+            var scrolled = document.scrollingElement.scrollTop;
+            console.log(scrolled);
+        });
+    },
     data() {
         return {
             selections: [
@@ -61,7 +67,7 @@ export default {
     methods: {
         ChangeSelection(val) {
             this.selection = val;
-        }
+        },
     },
 }
 </script>
@@ -74,6 +80,8 @@ $BorderColor:rgb(110, 95, 53);
     width: 100vw;
     height: 6vh;
     font-family: "標楷體";
+    position: fixed;
+    z-index: 1;
     .left {
         width: 20%;
         height: 100%;

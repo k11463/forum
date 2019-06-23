@@ -1,5 +1,5 @@
 <template>
-    <h1>與僑社不到</h1>
+    <h1>404啦 GG囉</h1>
 </template>
 
 <script>
